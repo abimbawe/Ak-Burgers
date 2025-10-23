@@ -8,19 +8,31 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing: border-box<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>Page title</title>
+            </head>
+            <body>
+                
+            </body>
+            </html>;
         }
         
         body {
             font-family: Arial, sans-serif;
+            padding: 20px;
             background-color: #f0f0f0;
         }
         
-        .app {
-            width: 100%;
-            min-height: 100vh;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
             background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .screen-info {
@@ -57,7 +69,7 @@
         }
         
         @media (max-width: 768px) {
-            .app {
+            .container {
                 padding: 15px;
             }
             
@@ -67,7 +79,7 @@
         }
         
         @media (max-width: 480px) {
-            .app {
+            .container {
                 padding: 10px;
             }
             
@@ -79,16 +91,16 @@
     </style>
 </head>
 <body>
-    <div class="app">
+    <div class="container">
         <div class="screen-info">
             <h2>Screen Size Test</h2>
             <p>Current screen width: <span id="screenWidth">0</span>px</p>
             <p>Current screen height: <span id="screenHeight">0</span>px</p>
-            <p>App width: <span id="appWidth">0</span>px</p>
+            <p>Container width: <span id="containerWidth">0</span>px</p>
         </div>
         
         <div class="size-box">
-            This app now takes the full screen width
+            This container adapts to different screen sizes
         </div>
         
         <div class="grid">
@@ -108,8 +120,8 @@
             document.getElementById('screenWidth').textContent = window.innerWidth;
             document.getElementById('screenHeight').textContent = window.innerHeight;
             
-            const app = document.querySelector('.app');
-            document.getElementById('appWidth').textContent = app.offsetWidth;
+            const container = document.querySelector('.container');
+            document.getElementById('containerWidth').textContent = container.offsetWidth;
         }
         
         // Update on load
