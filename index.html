@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Size Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        
+        .app {
+            width: 100%;
+            min-height: 100vh;
+            padding: 20px;
+            background-color: white;
+        }
+        
+        .screen-info {
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .size-box {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .grid-item {
+            background-color: #ff9800;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .app {
+                padding: 15px;
+            }
+            
+            .size-box {
+                background-color: #ff5722;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .app {
+                padding: 10px;
+            }
+            
+            .size-box {
+                background-color: #9c27b0;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="screen-info">
+            <h2>Screen Size Test</h2>
+            <p>Current screen width: <span id="screenWidth">0</span>px</p>
+            <p>Current screen height: <span id="screenHeight">0</span>px</p>
+            <p>App width: <span id="appWidth">0</span>px</p>
+        </div>
+        
+        <div class="size-box">
+            This app now takes the full screen width
+        </div>
+        
+        <div class="grid">
+            <div class="grid-item">Grid Item 1</div>
+            <div class="grid-item">Grid Item 2</div>
+            <div class="grid-item">Grid Item 3</div>
+            <div class="grid-item">Grid Item 4</div>
+        </div>
+        
+        <div style="margin-top: 20px; text-align: center;">
+            <p>Try resizing your browser window to see how the layout responds!</p>
+        </div>
+    </div>
+
+    <script>
+        function updateScreenInfo() {
+            document.getElementById('screenWidth').textContent = window.innerWidth;
+            document.getElementById('screenHeight').textContent = window.innerHeight;
+            
+            const app = document.querySelector('.app');
+            document.getElementById('appWidth').textContent = app.offsetWidth;
+        }
+        
+        // Update on load
+        updateScreenInfo();
+        
+        // Update on resize
+        window.addEventListener('resize', updateScreenInfo);
+        
+        // Update every second (optional)
+        setInterval(updateScreenInfo, 1000);
+    </script>
+</body>
+</html>
