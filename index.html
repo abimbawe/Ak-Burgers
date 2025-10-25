@@ -30,10 +30,10 @@ body{
 .app {
   width: 100%;
   max-width: 100%;
-  margin: 0; /* Remove auto margins */
+  margin: 0;
   min-height: 100vh;
   background: #fff;
-  box-shadow: none; /* Remove shadow */
+  box-shadow: none;
 }
 .hero{
   position:relative;
@@ -59,7 +59,9 @@ body{
 .brand .title{font-size:26px;font-weight:700;letter-spacing:0.2px}
 .brand .tag{font-size:14px; color: rgba(255,255,255,0.9)}
 .topicons{position:absolute; left:12px; top:10px; z-index:3; display:flex; gap:10px;}
-.topicons .btn{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.12);display:grid;place-items:center;color:#fff;backdrop-filter:blur(4px)}
+.topicons .btn{
+    
+}
 .socials{display:flex;gap:12px;margin-top:6px}
 .controls{
   padding:14px 16px;
@@ -94,29 +96,125 @@ body{
 .menu.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .menu.list{display:flex;flex-direction:column;gap:10px}
 .card{
-  background:var(--card);border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.04);
-  box-shadow:0 4px 12px rgba(0,0,0,0.04);display:flex;flex-direction:column;
+  background:var(--card);
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,0.04);
+  box-shadow:0 4px 12px rgba(0,0,0,0.04);
+  display:flex;
+  flex-direction:column;
+  height: 280px; /* Fixed height for consistency */
 }
-.card .thumb{height:110px;background:linear-gradient(135deg,#f5e9df,#e0cdbf);object-fit:cover;width:100%}
-.card .meta{padding:10px}
-.name{font-weight:700;font-size:14px;margin-bottom:4px}
+.card .thumb{
+  height: 185px; /* ~66% of card height (2/3) */
+  background:linear-gradient(135deg,#f5e9df,#e0cdbf);
+  object-fit:cover;
+  width:100%;
+  flex-shrink: 0;
+}
+.card .meta{
+  padding: 10px 12px;
+  height: 95px; /* ~33% of card height (1/3) */
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.name{font-weight:400;font-size:14px;margin-bottom:4px}
 .desc{color:var(--muted);font-size:12px;height:36px;overflow:hidden}
 .price{color:var(--accent);font-weight:800;margin-top:6px}
-.menu.list .card{flex-direction:row;align-items:center}
-.menu.list .thumb{width:110px;height:100px;flex:0 0 110px;border-radius:8px;margin-left:10px}
-.menu.list .meta{padding:12px 12px 12px 10px}
+.menu.list .card {
+  flex-direction: row;
+  align-items: center;
+  height: 120px; /* Fixed height for list view */
+  width: 100%;
+}
+
+.menu.list .thumb {
+  width: 100px; /* Fixed width for list view image */
+  height: 100px; /* Fixed height for list view image */
+  flex: 0 0 100px;
+  border-radius: 8px;
+  margin: 10px;
+  object-fit: cover;
+}
+
+.menu.list .meta {
+  padding: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.menu.list .name {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.menu.list .desc {
+  font-size: 13px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.menu.list .price {
+  font-size: 16px;
+  margin-top: 0;
+}
+
 .empty{text-align:center;color:var(--muted);padding:24px}
 
 @media (min-width: 768px) {
   .app {
     max-width: 100%;
-    margin: 0; /* No margins */
-    box-shadow: none; /* No shadow */
+    margin: 0;
+    box-shadow: none;
   }
   
   #menu.menu.grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 16px;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 16px;
+  }
+  
+  .card {
+    height: 300px;
+    width: 100%;
+  }
+  
+  .card .thumb {
+    height: 200px;
+  }
+  
+  .card .meta {
+    height: 100px;
+  }
+  
+  /* List view for tablet */
+  .menu.list .card {
+    height: 140px;
+  }
+  
+  .menu.list .thumb {
+    width: 120px;
+    height: 120px;
+    flex: 0 0 120px;
+  }
+  
+  .menu.list .name {
+    font-size: 18px;
+  }
+  
+  .menu.list .desc {
+    font-size: 14px;
+  }
+  
+  .menu.list .price {
+    font-size: 18px;
   }
 }
 
@@ -126,24 +224,245 @@ body{
     margin: 0;
     box-shadow: none;
   }
+  
+  #menu.menu.grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 20px;
+  }
+  
+  .card {
+    height: 320px;
+    width: 100%;
+  }
+  
+  .card .thumb {
+    height: 215px;
+  }
+  
+  .card .meta {
+    height: 105px;
+  }
 }
+.banner-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Adjust app min-height to account for banner */
+.app {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  min-height: calc(100vh - 200px); /* Subtract banner height */
+  background: #fff;
+  box-shadow: none;
+}
+.hero {
+  border-radius: 0 !important;
+}
+.controls {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.card .thumb {
+  height: 185px;
+  background: linear-gradient(135deg,#f5e9df,#e0cdbf);
+  object-fit: cover;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.card .thumb img {
+  transition: opacity 0.3s ease;
+}
+
+.card .thumb img[loading="lazy"] {
+  opacity: 0;
+}
+
+.card .thumb img.loaded {
+  opacity: 1;
+}
+.site-footer {
+  background: var(--bg);
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding: 8px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.footer-content {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Adjust content padding */
+.content {
+  padding: 12px 12px 40px 12px;
+}
+
+
+.banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Adjust app to account for banner */
+.app {
+  min-height: calc(100vh - 120px - 40px); /* Subtract banner and footer height */
+}
+
+/* Force smaller header */
+.hero {
+  padding: 20px 12px 15px !important;
+  min-height: 120px !important;
+}
+
+.brand .title {
+  font-size: 20px !important;
+  margin-bottom: 2px !important;
+}
+
+.brand .tag {
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+}
+
+.hero-inner {
+  gap: 6px !important;
+}
+
+.topicons {
+  top: 6px !important;
+  left: 8px !important;
+}
+
+.topicons .btn {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 14px !important;
+}
+
+.socials {
+  margin-top: 2px !important;
+  gap: 8px !important
+}
+.price {
+  font-weight: 800 !important;
+  margin-top: 8px !important;
+  font-size: 16px !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 20px !important;
+  padding-bottom: 4px !important;
+}
+
+.card .meta {
+  padding: 10px 12px !important;
+  height: auto !important;
+  min-height: 100px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+/* Make sure cards have enough bottom padding */
+.card {
+  padding-bottom: 8px !important;
+}
+.name{font-weight:400;font-size:14px;margin-bottom:4px}
+} 
+.price {
+  font-weight: 800 !important;
+  margin-top: 8px !important;
+  font-size: 16px !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 20px !important;
+  padding-bottom: 4px !important;
+}
+
+.card .meta {
+  padding: 10px 12px !important;
+  height: auto !important;
+  min-height: 100px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+/* Make sure cards have enough bottom padding */
+.card {
+  padding-bottom: 8px !important;
+}
+/* Hide description on mobile */
+@media (max-width: 767px) {
+  .desc {
+    display: none !important;
+  }
+  
+  .card .meta {
+    min-height: 70px !important; /* Adjust height for mobile */
+    padding: 8px 10px !important;
+  }
+  
+  .card {
+    min-height: 240px !important; /* Smaller cards on mobile */
+  }
+  
+  .card .thumb {
+    height: 150px !important; /* Adjust image height */
+  }
+}
+
+/* Keep description visible on tablet/desktop */
+@media (min-width: 768px) {
+  .desc {
+    display: block !important;
+  }
 }
 </style>
 </head>
 <body>
+  <div class="banner-image">
+  <img src="https://i.ibb.co/WWqGyfYw/file-000000009308622f9bd97780f6b5434f.png" alt="AK Restaurant Food Banner" />
+</div>
   <div class="app" id="app">
     <section class="hero" aria-label="Hero header">
       <div class="topicons" aria-hidden="true">
-        <div class="btn" title="Menu">☰</div>
+        <div class="btn" title="Menu"></div>
       </div>
       <div class="hero-inner">
         <div class="brand-row">
           <div class="brand">
             <div class="title">AK Restaurant</div>
-            <div class="tag">Welcome to AK Restaurant — Have a Great Meal!</div>
+            <div class="tag">Welcome to AK Restaurant</div>
           </div>
           <div style="display:flex;gap:10px;align-items:center">
-            <div style="width:48px;height:48px;border-radius:50%;background:#fff;display:grid;place-items:center;color:#6b3e18;font-weight:700">AK</div>
+            
           </div>
         </div>
         <div class="socials" aria-hidden="true">
@@ -173,188 +492,195 @@ body{
       <section id="menu" class="menu grid" aria-live="polite"></section>
       <div id="empty" class="empty" style="display:none">No items found.</div>
     </main>
+      
+
+  <!-- Fixed Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>All prices include VAT</p>
+    </div>
+  </footer>
+</div>
   </div>
 
-  <!-- Link JS at the bottom -->
- <script>
-    /* FULL MENU with placeholder images */
+  <script>
+    /* FULL MENU with imgbb images */
 const MENU = [
   {
     title:"BREAK FAST/ቁርስ",
     items:[
-      {name:"SPECIAL CHECHEBSA", price:300, desc:"Honey,egg,pita,berbere,shro", img:"images/special_chechebsa.jpg"},
-      {name:"NORMAL CHECHEBSA", price:250, desc:"Honey,pita,berbere,shro", img:"images/normal_chechebsa.jpg"},
-      {name:"EGG FRIED", price:300, desc:"Onion, green pepper, tomato,egg", img:"images/egg_fried.jpg"},
-      {name:"SPECIAL FUL", price:300, desc:"Bens,onion, green pepper, tomato,egg", img:"images/special_ful.jpg"},
-      {name:"NORMAL FIRFIR", price:300, desc:"Four hani", img:"images/normal_firfir.jpg"},
-      {name:"NORMAL OMELET", price:300, desc:"Onion, tomato, green pepper, egg", img:"images/normal_omelet.jpg"},
-      {name:"SPECIAL OMELET", price:400, desc:"Onion,tomato,green pepper,cheese,beef", img:"images/special_omelet.jpg"},
-      {name:"TIBS FIRFIR", price:400, desc:"", img:"images/tibs_firfir.jpg"},
-      {name:"EGG SCRAMBLE", price:250, desc:"", img:"images/egg_scramble.jpg"},
-      {name:"TUNA FIRFIR", price:450, desc:"", img:"images/tuna_firfir.jpg"}
+      {name:"ከዊል ጨጨብሳ/SPECIAL CHECHEBSA", price:300, desc:"Honey,egg,pita,berbere,shro", img:"https://i.ibb.co/9Hf2v53S/download-2025-10-24-T192253-913.webp"},
+      {name:"ኖርማል ጨጨብሳ/NORMAL CHECHEBSA", price:250, desc:"Honey,pita,berbere,shro", img:"https://i.ibb.co/Hp79WT6J/download-2025-10-24-T192250-447.webp"},
+      {name:"እንቁላል ጥብስ/EGG FRIED", price:300, desc:"Onion, green pepper, tomato,egg", img:"https://i.ibb.co/1YDpyg6D/download-2025-10-24-T192245-440.webp"},
+      {name:"ስፔሻል ፉል/SPECIAL FUL", price:300, desc:"Bens,onion, green pepper, tomato,egg", img:"https://i.ibb.co/MkzWss6k/download-100.webp"},
+      {name:"ኖርማል ፍርፍር/NORMAL FIRFIR", price:300, desc:"Four hani", img:"https://i.ibb.co/Ndm00kQb/download-99.webp"},
+      {name:"ኖርማል አምሌት/NORMAL OMELET", price:300, desc:"Onion, tomato, green pepper, egg", img:"https://i.ibb.co/yBqz45cm/download-98.webp"},
+      {name:"ስፔሻል አምሌት/SPECIAL OMELET", price:400, desc:"Onion,tomato,green pepper,cheese,beef", img:"https://i.ibb.co/RTt7BVm0/download-97.webp"},
+      {name:"ጥብስ ፍርፍር/TIBS FIRFIR", price:400, desc:"", img:"https://i.ibb.co/fzw4r17Z/download-96.webp"},
+      {name:"እንቁላል ፍርፍር/EGG SCRAMBLE", price:250, desc:"", img:"https://i.ibb.co/m5ty38QJ/download-95.webp"},
+      {name:"ቱና ፍርፍር/TUNA FIRFIR", price:450, desc:"", img:"https://i.ibb.co/ycbkMXSK/download-94.webp"}
     ]
   },
   {
     title:"SOUP/ሾርባ",
     items:[
-      {name:"Chicken SOUP", price:450, desc:"Flor milk chicken", img:"images/chicken_soup.jpg"},
-      {name:"VEGETABLE SOUP", price:350, desc:"Siznale vegeteble", img:"images/vegetable_soup.jpg"},
-      {name:"MEAT SOUP", price:450, desc:"Souce mixe met", img:"images/meat_soup.jpg"}
+      {name:"ችክን ሾርባ/Chicken SOUP", price:450, desc:"Flor milk chicken", img:"https://i.ibb.co/WWD5t8L5/download-93.webp"},
+      {name:"አትክልት ሾርባ/VEGETABLE SOUP", price:350, desc:"Siznale vegeteble", img:"https://i.ibb.co/1fyw3Nqx/download-92.webp"},
+      {name:"ስጋ ሾርባ/MEAT SOUP", price:450, desc:"Souce mixe met", img:"https://i.ibb.co/Z1GCw1Ck/download-91.webp"}
     ]
   },
   {
     title:"LUNCH/DINNER/ምሳ/እራት",
     items:[
-      {name:"CHICKEN BREAST", price:500, desc:"Chicken, rice, seasonal, vegetable", img:"images/chicken_breast.jpg"},
-      {name:"STEAK ALAGRILL", price:500, desc:"Beeilli, rice, sensonal,vegetable", img:"images/steak_alagrill.jpg"},
-      {name:"STEAK ALBISMAK", price:500, desc:"Beeilli, cheese,rice, sensonal,vegetable", img:"images/steak_albismak.jpg"},
-      {name:"ROOSTED CHICKEN LEG", price:500, desc:"Frenchfries with vegetable", img:"images/roasted_chicken_leg.jpg"},
-      {name:"LASAGNA", price:500, desc:"Meat souce,cheese", img:"images/lasagna.jpg"},
-      {name:"CHICKEN DRUM", price:500, desc:"Marinated chicken, flaur, egg", img:"images/chicken_drum.jpg"},
-      {name:"SHERO", price:350, desc:"", img:"images/shero.jpg"},
-      {name:"CHIKNA TIBS", price:500, desc:"", img:"images/chikna_tibs.jpg"}
+      {name:"CHICKEN BREAST/ቺክን ብረስት", price:500, desc:"Chicken, rice, seasonal, vegetable", img:"https://i.ibb.co/9kMxLMNb/download-90.webp"},
+      {name:"STEAK ALAGRILL/ስቴክ አላግሪል", price:500, desc:"Beeilli, rice, sensonal,vegetable", img:"https://i.ibb.co/5xxN3TPF/download-89.webp"},
+      {name:"STEAK ALBISMAK/ስቴክ አልብስማክ", price:500, desc:"Beeilli, cheese,rice, sensonal,vegetable", img:"https://i.ibb.co/0jP55M2F/download-88.webp"},
+      {name:"ROOSTED CHICKEN LEG/ሮስትድ ችክን ሌግ", price:500, desc:"Frenchfries with vegetable", img:"https://i.ibb.co/0p1VPD3J/download-87.webp"},
+      {name:"LASAGNA/ላዛኛ", price:500, desc:"Meat souce,cheese", img:"https://i.ibb.co/SgcG685/download-86.webp"},
+      {name:"CHICKEN DRUM/ችክን ድራም", price:500, desc:"Marinated chicken, flaur, egg", img:"https://i.ibb.co/wFX6sMjb/download-85.webp"},
+      {name:"SHERO/ሽሮ", price:350, desc:"", img:"https://i.ibb.co/8Djvb9Cj/download-84.webp"},
+      {name:"CHIKNA TIBS/ጭቅና ጥብስ", price:500, desc:"", img:"https://i.ibb.co/ZzTh9crC/download-83.webp"}
     ]
   },
   {
     title:"SPAGHETTI/ፓስታ",
     items:[
-      {name:"SPAGHETTI WITH TOMATO", price:300, desc:"Spageti, tomatosouce", img:"images/spaghetti_tomato.jpg"},
-      {name:"SPAGHETTI WITH TUNA", price:400, desc:"Spageti, tuna", img:"images/spaghetti_tuna.jpg"},
-      {name:"SPAGHETTI WITH MEAT", price:400, desc:"Spageti, meat souce", img:"images/spaghetti_meat.jpg"},
-      {name:"SPAGHETTI WITH VEGETABLE", price:300, desc:"Carrot, spinach, cabboge, zucchini, chili, onion, origano", img:"images/spaghetti_veg.jpg"}
+      {name:"ፓስታ በስጐ/SPAGHETTI WITH TOMATO", price:300, desc:"Spageti, tomatosouce", img:"https://i.ibb.co/fzybnK41/download-82.webp"},
+      {name:"ፓስታ በቱና/SPAGHETTI WITH TUNA", price:400, desc:"Spageti, tuna", img:"https://i.ibb.co/yn636h0b/download-81.webp"},
+      {name:"ፓስታ በስጋ/SPAGHETTI WITH MEAT", price:400, desc:"Spageti, meat souce", img:"https://i.ibb.co/6cfMndm0/download-80.webp"},
+      {name:"ፓስታ በአትክልት/SPAGHETTI WITH VEGETABLE", price:300, desc:"Carrot, spinach, cabboge, zucchini, chili, onion, origano", img:"https://i.ibb.co/bMhjQJpD/download-79.webp"}
     ]
   },
   {
     title:"Rice/ሩዝ",
     items:[
-      {name:"RICE WITH TOMATO", price:300, desc:"", img:"images/rice_tomato.jpg"},
-      {name:"RICE WITH TUNA", price:400, desc:"", img:"images/rice_tuna.jpg"},
-      {name:"RICE WITH MEAT", price:400, desc:"", img:"images/rice_meat.jpg"},
-      {name:"RICE WITH VEGIBLE", price:300, desc:"", img:"images/rice_veg.jpg"}
+      {name:"RICE WITH TOMATO/ሩዝ በስጓ", price:300, desc:"", img:"https://i.ibb.co/KzzmWLb1/download-78.webp"},
+      {name:"RICE WITH TUNA/ሩዝ በቱና", price:400, desc:"", img:"https://i.ibb.co/gFwJpb78/download-77.webp"},
+      {name:"RICE WITH MEAT/ሩዝ በስጋ", price:400, desc:"", img:"https://i.ibb.co/G4RLPWVj/download-76.webp"},
+      {name:"RICE WITH VEGETABLE/ሩዝ በአትክልት", price:300, desc:"", img:"https://i.ibb.co/PztZwpd2/download-75.webp"}
     ]
   },
   {
     title:"FISH/ዓሳ",
     items:[
-      {name:"FISH CUTLET", price:450, desc:"Telapla, mustard, egg, bread, cramp, rice, vegetable", img:"images/fish_cutlet.jpg"},
-      {name:"FISH GOULASH", price:450, desc:"Tomato souce, green paper, onion, tomato, rice", img:"images/fish_goulash.jpg"},
-      {name:"FISH LEBLEB", price:450, desc:"Telapiafish, onion, tomato, chilli", img:"images/fish_lebleb.jpg"}
+      {name:"FISH CUTLET/ፊሽ ኮተሌት", price:450, desc:"Telapla, mustard, egg, bread, cramp, rice, vegetable", img:"https://i.ibb.co/gFHsNJHp/download-74.webp"},
+      {name:"FISH GOULASH/ፊሽ ጉላሽ", price:450, desc:"Tomato souce, green paper, onion, tomato, rice", img:"https://i.ibb.co/b566zrvD/download-73.webp"},
+      {name:"FISH LEBLEB/ፊሽ ለብለብ", price:450, desc:"Telapiafish, onion, tomato, chilli", img:"https://i.ibb.co/LDnvvC7g/download-72.webp"}
     ]
   },
   {
     title:"PIZZA/ፒዛ",
     items:[
-      {name:"AK SPECIAL PIZZA", price:670, desc:"Beef, hum, chicken, egg, mozzorela cheese, olive, mushroom, tomato souse, onion, chili, origano", img:"images/ak_special_pizza.jpg"},
-      {name:"BEEF PIZZA", price:450, desc:"Beef, hum, mozzorela cheese, tomato souse, onion, origano", img:"images/beef_pizza.jpg"},
-      {name:"CHICKEN PIZZA", price:550, desc:"Chicken, mozzorela cheese, tomato souse, onion, chili, origano", img:"images/chicken_pizza.jpg"},
-      {name:"MARGARITA PIZZA", price:450, desc:"Mozzorela cheese, tomato souse, origano", img:"images/margarita_pizza.jpg"},
-      {name:"TUNA PIZZA", price:550, desc:"Tuna, tomato souse, onion, chili, origano", img:"images/tuna_pizza.jpg"},
-      {name:"VEGETABLE PIZZA", price:400, desc:"Carrot, spinach, cabboge, zucchini, tomato souce, chili, onion, origano", img:"images/vegetable_pizza.jpg"}
+      {name:"AK SPECIAL PIZZA/እስፔሻል ፒዛ", price:670, desc:"Beef, hum, chicken, egg, mozzorela cheese, olive, mushroom, tomato souse, onion, chili, origano", img:"https://i.ibb.co/6VkQ1bk/download-71.webp"},
+      {name:"BEEF PIZZA/ቢፍ ፒዛ", price:450, desc:"Beef, hum, mozzorela cheese, tomato souse, onion, origano", img:"https://i.ibb.co/qFCVcDM8/download-70.webp"},
+      {name:"CHICKEN PIZZA/ችክን ፒዛ", price:550, desc:"Chicken, mozzorela cheese, tomato souse, onion, chili, origano", img:"https://i.ibb.co/jPZ0mVYs/download-69.webp"},
+      {name:"MARGARITA PIZZA/ማርጋሪታ ፒዛ", price:450, desc:"Mozzorela cheese, tomato souse, origano", img:"https://i.ibb.co/0VR15qmp/download-68.webp"},
+      {name:"TUNA PIZZA/ቱና ፒዛ", price:550, desc:"Tuna, tomato souse, onion, chili, origano", img:"https://i.ibb.co/8Z4cppL/download-67.webp"},
+      {name:"VEGETABLE PIZZA/አትክልት ፒዛ", price:400, desc:"Carrot, spinach, cabboge, zucchini, tomato souce, chili, onion, origano", img:"https://i.ibb.co/N6k9bQLk/download-66.webp"}
     ]
   },
   {
     title:"BURGER/በርገር",
     items:[
-      {name:"AK SPECIAL BURGERS", price:670, desc:"Beef, hum, chicken, egg, mozzorela cheese, onion, tomato, onion, chili, salad, mayorise", img:"images/ak_special_burger.jpg"},
-      {name:"BEEF BURGER", price:450, desc:"Beef, hum, tomato, mayoroise, chips", img:"images/beef_burger.jpg"},
-      {name:"CHEESE BURGER", price:500, desc:"Beef, hum, tomato, mayoroise, cheese", img:"images/cheese_burger.jpg"},
-      {name:"CHICKEN BURGER", price:600, desc:"Cheese, hum, tomato, mayoroise, cheese, chips", img:"images/chicken_burger.jpg"},
-      {name:"FRENCH FRIES", price:200, desc:"", img:"images/french_fries.jpg"}
+      {name:"AK SPECIAL BURGERS", price:670, desc:"Beef, hum, chicken, egg, mozzorela cheese, onion, tomato, onion, chili, salad, mayorise", img:"https://i.ibb.co/7JzKyr8F/download-65.webp"},
+      {name:"BEEF BURGER/ቢፍ በርገር", price:450, desc:"Beef, hum, tomato, mayoroise, chips", img:"https://i.ibb.co/nsJnvdB2/download-64.webp"},
+      {name:"CHEESE BURGER/ቺዝ በርገር", price:500, desc:"Beef, hum, tomato, mayoroise, cheese", img:"https://i.ibb.co/XZxmzvkZ/download-63.webp"},
+      {name:"CHICKEN BURGER/ቺክን በርገር", price:600, desc:"Cheese, hum, tomato, mayoroise, cheese, chips", img:"https://i.ibb.co/ZpNfnrv8/download-62.webp"},
+      {name:"FRENCH FRIES/ፍሬንች ፍራይስ", price:200, desc:"", img:"https://i.ibb.co/NnNstPwV/download-61.webp"}
     ]
   },
   {
     title:"WRAP/ራፕ",
     items:[
-      {name:"CHICKEN WRAP", price:500, desc:"Chicken, mayoroise, ketchup, pitta bread", img:"images/chicken_wrap.jpg"},
-      {name:"TUNA WRAP", price:450, desc:"Tuna, mayoroise, ketchup, pitta bread", img:"images/tuna_wrap.jpg"},
-      {name:"VEGETABLE WRAP", price:300, desc:"Carrot, spinach, cabboge, zucchini, chili, onion, origano", img:"images/vegetable_wrap.jpg"}
+      {name:"CHICKEN WRAP/ችክን ራፕ", price:500, desc:"Chicken, mayoroise, ketchup, pitta bread", img:"https://i.ibb.co/m5tKwmdc/download-60.webp"},
+      {name:"TUNA WRAP/ቱና ራፕ", price:450, desc:"Tuna, mayoroise, ketchup, pitta bread", img:"https://i.ibb.co/pvcJ80fH/download-59.webp"},
+      {name:"VEGETABLE WRAP/የአትክልት ራፕ", price:300, desc:"Carrot, spinach, cabboge, zucchini, chili, onion, origano", img:"https://i.ibb.co/v60H9ZjQ/download-58.webp"}
     ]
   },
   {
     title:"Sandwich/ሳንዱች",
     items:[
-      {name:"Tuna Sandwich", price:450, desc:"", img:"images/tuna_sandwich.jpg"},
-      {name:"CLUB SANDWICH", price:500, desc:"", img:"images/club_sandwich.jpg"},
-      {name:"EGG SANDWICH", price:350, desc:"", img:"images/egg_sandwich.jpg"},
-      {name:"VEGETABLE SANDWICH", price:300, desc:"", img:"images/vegetable_sandwich.jpg"},
-      {name:"Chicken Sandwich", price:450, desc:"", img:"images/chicken_sandwich.jpg"},
-      {name:"CHEES SANDWICH", price:500, desc:"", img:"images/cheese_sandwich.jpg"},
-      {name:"HAM AND CHEES SANDWICH", price:400, desc:"", img:"images/ham_cheese_sandwich.jpg"},
-      {name:"STEAK SANDWICH", price:500, desc:"", img:"images/steak_sandwich.jpg"},
-      {name:"Ak Special Steak", price:700, desc:"", img:"images/ak_special_steak.jpg"}
+      {name:"TUNA SANDWICH/ቱና ሳንዱች", price:450, desc:"", img:"https://i.ibb.co/nMqkS9wT/download-57.webp"},
+      {name:"CLUB SANDWICH/ክለብ ሳንዱች", price:500, desc:"", img:"https://i.ibb.co/LXXsMQtQ/download-56.webp"},
+      {name:"EGG SANDWICH/እንቁላል ሳንዱች", price:350, desc:"", img:"https://i.ibb.co/67s3JPT1/download-55.webp"},
+      {name:"VEGETABLE SANDWICH/የአትክልት ሳንዱች", price:300, desc:"", img:"https://i.ibb.co/yBNZC7Hg/download-54.webp"},
+      {name:"CHICKEN SANDWICH/ቺክን ሳንዱች", price:450, desc:"", img:"https://i.ibb.co/ym2hgL3L/download-53.webp"},
+      {name:"CHEES SANDWICH/ቺዝ ሳንዱች", price:500, desc:"", img:"https://i.ibb.co/21gNtdsj/download-52.webp"},
+      {name:"HAM AND CHEES SANDWICH/ሀም ና ቺዝ ሳንዱች", price:400, desc:"", img:"https://i.ibb.co/FkFHXX76/download-51.webp"},
+      {name:"STEAK SANDWICH/ስቴክ ሳንዱች", price:500, desc:"", img:"https://i.ibb.co/SX8cpcch/download-50.webp"},
+      {name:"Ak Special Steak/ስፔሻል ሳንዱች", price:700, desc:"", img:"https://i.ibb.co/Z9hNCdn/download-49.webp"}
     ]
   },
   {
     title:"SALAD/አትክልት",
     items:[
-      {name:"TUNA SALAD", price:400, desc:"Tuna, tomato, onion, chili, salad, dressing", img:"images/tuna_salad.jpg"},
-      {name:"COOKED VEGETABLES", price:250, desc:"Carrot, broccoli, zucchini, oil", img:"images/cooked_vegetables.jpg"},
-      {name:"AK SPECIAL SALAD", price:300, desc:"Papay,avocado,potato,tuna,tomato", img:"images/ak_special_salad.jpg"}
+      {name:"TUNA SALAD/ቱና አትክልት", price:400, desc:"Tuna, tomato, onion, chili, salad, dressing", img:"https://i.ibb.co/dn1KzJQ/download-48.webp"},
+      {name:"COOKED VEGETABLES/የበሰለ አትክልት", price:250, desc:"Carrot, broccoli, zucchini, oil", img:"https://i.ibb.co/Mkk4tQCZ/download-47.webp"},
+      {name:"AK SPECIAL SALAD/አሰፔሻል አትክልት", price:300, desc:"Papay,avocado,potato,tuna,tomato", img:"https://i.ibb.co/Y4s9sy8k/download-46.webp"}
     ]
   },
   {
     title:"SANBUSA/ሳንቡሳ",
     items:[
-      {name:"SABUSA WITH MEET", price:300, desc:"Onion, green pepper, met", img:"images/sabusa_meet.jpg"},
-      {name:"SABUSA WITH MESER", price:250, desc:"Onion, green pepper, meser", img:"images/sabusa_meser.jpg"},
-      {name:"SABUSA WITH VEGETABLE", price:250, desc:"Onion, greenpepper, tomato", img:"images/sabusa_veg.jpg"},
-      {name:"WAFFLE", price:250, desc:"Flour, milk, vanilao, egg", img:"images/waffle.jpg"},
-      {name:"SPRING ROLL VEGETABLE", price:200, desc:"", img:"images/spring_roll_veg.jpg"}
+      {name:"SAMBUSA WITH MEET/ሳምቡሳ በስጋ", price:300, desc:"Onion, green pepper, met", img:"https://i.ibb.co/mFyfwphg/download-45.jpg"},
+      {name:"SAMBUSA WITH MESER/ሳምቡሳ በምስር", price:250, desc:"Onion, green pepper, meser", img:"https://i.ibb.co/pBFfsLCb/download-44.webp"},
+      {name:"SAMBUSA WITH VEGETABLE/ሳምቡሳ በአትክል", price:250, desc:"Onion, greenpepper, tomato", img:"https://i.ibb.co/jvNYkXk6/download-43.webp"},
+      {name:"WAFFLE/ዋፍል", price:250, desc:"Flour, milk, vanilao, egg", img:"https://i.ibb.co/d41qT0z9/download-42.webp"},
+      {name:"SPRING ROLL VEGETABLE/እስፕሪንግ ሮል በአትክልት", price:200, desc:"", img:"https://i.ibb.co/B25DhWkT/download-41.webp"}
     ]
   },
   {
     title:"Juice/ጁስ",
     items:[
-      {name:"Ak Special Juice", price:230, desc:"", img:"images/ak_special_juice.jpg"},
-      {name:"STROBERY JUICE", price:220, desc:"", img:"images/strawberry_juice.jpg"},
-      {name:"CAROT JUICE", price:170, desc:"", img:"images/carrot_juice.jpg"},
-      {name:"LEMON JUICE", price:170, desc:"", img:"images/lemon_juice.jpg"},
-      {name:"GINGER JUICE", price:170, desc:"", img:"images/ginger_juice.jpg"},
-      {name:"PAPAYA JUICE", price:170, desc:"", img:"images/papaya_juice.jpg"},
-      {name:"MANGO JUICE", price:190, desc:"", img:"images/mango_juice.jpg"},
-      {name:"AVOCADO JUICE", price:170, desc:"", img:"images/avocado_juice.jpg"},
-      {name:"MILK SHAKE", price:250, desc:"", img:"images/milkshake.jpg"},
-      {name:"BEET ROOT JUICE", price:170, desc:"", img:"images/beetroot_juice.jpg"},
-      {name:"WATERMELON JUICE", price:190, desc:"", img:"images/watermelon_juice.jpg"},
-      {name:"PINEAPPL JUICE", price:190, desc:"", img:"images/pineapple_juice.jpg"},
-      {name:"ORANG JUICE", price:220, desc:"", img:"images/orange_juice.jpg"},
-      {name:"Mix juice", price:170, desc:"", img:"images/mix_juice.jpg"}
+      {name:"አኬ ስፔሻል ጁስ/Ak Special Juice", price:230, desc:"", img:"https://i.ibb.co/CsXR8NGD/download-40.webp"},
+      {name:"ስትሮበሪ ጁስ/STROBERY JUICE", price:220, desc:"", img:"https://i.ibb.co/9kCmdSNQ/download-39.webp"},
+      {name:"ካሮት ጁስ/CARROT JUICE", price:170, desc:"", img:"https://i.ibb.co/DgQQpNR2/download-38.webp"},
+      {name:"ሎሚ ጁስ/LEMON JUICE", price:170, desc:"", img:"https://i.ibb.co/tM5ZNcfw/download-37.webp"},
+      {name:"ዝንጅብል ጁስ/GINGER JUICE", price:170, desc:"", img:"https://i.ibb.co/dXXz5fH/download-36.webp"},
+      {name:"ፓፓያ ጁስ/PAPAYA JUICE", price:170, desc:"", img:"https://i.ibb.co/VWvnBbQC/download-35.webp"},
+      {name:"ማንጎ ጁስ/MANGO JUICE", price:190, desc:"", img:"https://i.ibb.co/v4TZdT8G/download-34.webp"},
+      {name:"አቮካዶ ጁስ/AVOCADO JUICE", price:170, desc:"", img:"https://i.ibb.co/BVdgvvpX/download-33.webp"},
+      {name:"ሚልክ ሼክ ጁስ/MILK SHAKE", price:250, desc:"", img:"https://i.ibb.co/cKN7tTxz/download-32.webp"},
+      {name:"ቀይስር ጁስ/BEET ROOT JUICE", price:170, desc:"", img:"https://i.ibb.co/Kj5Jfsz3/download-31.webp"},
+      {name:"ዋተርሜሎን ጁስ/WATERMELON JUICE", price:190, desc:"", img:"https://i.ibb.co/cVWMLwr/download-30.webp"},
+      {name:"ፓይናፕል ጁስ/PINEAPPL JUICE", price:190, desc:"", img:"https://i.ibb.co/hFLxjXq6/download-29.webp"},
+      {name:"ቡርቱካን ጁስ/ORANG JUICE", price:220, desc:"", img:"https://i.ibb.co/Wpx2b4K0/download-28.webp"},
+      {name:"ስፕሪስ ጁስ/Mix juice", price:170, desc:"", img:"https://i.ibb.co/1YTQ8QqM/download-27.webp"}
     ]
   },
   {
     title:"HOT DRINKS/ትኩስ መጠጦች",
     items:[
-      {name:"SPECIAL TEA", price:120, desc:"", img:"images/special_tea.jpg"},
-      {name:"LEMON TEA", price:60, desc:"", img:"images/lemon_tea.jpg"},
-      {name:"COFFEE", price:60, desc:"", img:"images/coffee.jpg"},
-      {name:"MILK", price:85, desc:"", img:"images/milk.jpg"},
-      {name:"GINGER TEA", price:60, desc:"", img:"images/ginger_tea.jpg"},
-      {name:"MACCHIATO", price:80, desc:"", img:"images/macchiato.jpg"},
-      {name:"SPICE TEA", price:75, desc:"", img:"images/spice_tea.jpg"},
-      {name:"PEANUT TEA", price:70, desc:"", img:"images/peanut_tea.jpg"},
-      {name:"CAFE LATTE", price:90, desc:"", img:"images/cafe_latte.jpg"},
-      {name:"ICED COFFEE", price:90, desc:"", img:"images/iced_coffee.jpg"},
-      {name:"ICED SPICE MILK", price:180, desc:"", img:"images/iced_spice_milk.jpg"},
-      {name:"ICED CHOCOLATE", price:180, desc:"", img:"images/iced_chocolate.jpg"},
-      {name:"ICED LATTE", price:140, desc:"", img:"images/iced_latte.jpg"},
-      {name:"CARAMEL LATTE", price:140, desc:"", img:"images/caramel_latte.jpg"},
-      {name:"CAPPUCHIONE", price:140, desc:"", img:"images/cappuchione.jpg"},
-      {name:"CARACK TEA", price:90, desc:"", img:"images/carack_tea.jpg"},
-      {name:"HOT SPANISH MILK", price:180, desc:"", img:"images/hot_spanish_milk.jpg"}
+      {name:"ስፔሻል ሻይ/SPECIAL TEA", price:120, desc:"", img:"https://i.ibb.co/0V2JRjrz/download-26.webp"},
+      {name:"ሌሞን ሻይ/LEMON TEA", price:60, desc:"", img:"https://i.ibb.co/pBRCLzyp/download-25.webp"},
+      {name:"ቡና/COFFEE", price:60, desc:"", img:"https://i.ibb.co/F42Qjpn2/download-24.webp"},
+      {name:"ወተት/MILK", price:85, desc:"", img:"https://i.ibb.co/35N1frkm/download-23.webp"},
+      {name:"ዝንጅብል ሻይ/GINGER TEA", price:60, desc:"", img:"https://i.ibb.co/Tq7m3XXM/download-22.webp"},
+      {name:"ማኪያቶ/MACCHIATO", price:80, desc:"", img:"https://i.ibb.co/6RM01TnD/download-21.webp"},
+      {name:"እስፕሪስ ሻይ/SPICE TEA", price:75, desc:"", img:"https://i.ibb.co/Kj0N7nPD/download-20.webp"},
+      {name:"የለውዝ ሻይ/PEANUT TEA", price:70, desc:"", img:"https://i.ibb.co/Y7gwWVHz/download-19.webp"},
+      {name:"ካፌ ላቴ/CAFE LATTE", price:90, desc:"", img:"https://i.ibb.co/LXW1xxWb/download-18.webp"},
+      {name:"አይስ ቡና/ICED COFFEE", price:90, desc:"", img:"https://i.ibb.co/s9k1tzSP/download-17.webp"},
+      {name:"አይስ እስፕሪስ ወተት/ICED SPICE MILK", price:180, desc:"", img:"https://i.ibb.co/Q7KQ2s0G/download-16.webp"},
+      {name:"አይስ ቸኮሌት/ICED CHOCOLATE", price:180, desc:"", img:"https://i.ibb.co/zThPTF37/download-15.webp"},
+      {name:"አይስ ላቴ/ICED LATTE", price:140, desc:"", img:"https://i.ibb.co/2YyKLt9q/download-14.webp"},
+      {name:"ካራሜል ላቴ/CARAMEL LATTE", price:140, desc:"", img:"https://i.ibb.co/RThmm428/download-13.webp"},
+      {name:"ካፑቺኖ/CAPPUCHIONE", price:140, desc:"", img:"https://i.ibb.co/xt0KHsh6/download-12.webp"},
+      {name:"ካራክ ሻይ/CARACK TEA", price:90, desc:"", img:"https://i.ibb.co/ynyZKW4w/download-11.webp"},
+      {name:"ሆት እስፓኒሽ ወተት/HOT SPANISH MILK", price:180, desc:"", img:"https://i.ibb.co/W4WDxPVp/download-10.webp"}
     ]
   },
   {
     title:"COLD DRINKS/ቀዝቃዛ መጠጦች",
     items:[
-      {name:"0.5 L SPRING WATER", price:35, desc:"", img:"images/0_5l_spring_water.jpg"},
-      {name:"1L SPRING WATER", price:45, desc:"", img:"images/1l_spring_water.jpg"},
-      {name:"2L SPRING WATER", price:60, desc:"", img:"images/2l_spring_water.jpg"},
-      {name:"MINI L SPRING WATER", price:25, desc:"", img:"images/mini_l_spring_water.jpg"},
-      {name:"SOFT DRINKS", price:60, desc:"", img:"images/soft_drinks.jpg"}
+      {name:"ዐ.5ሊ. ስፕሪንግ ውሃ/0.5L SPRING WATER", price:35, desc:"", img:"https://i.ibb.co/Kc4DtPrf/images-21-1.webp"},
+      {name:"1 ሊትር ውሃ/1L SPRING WATER", price:45, desc:"", img:"https://i.ibb.co/HD0qdSLM/20251024-220952.webp"},
+      {name:"2ሊ. ስፕሪንግ ውሃ/2L SPRING WATER", price:60, desc:"", img:"https://i.ibb.co/SYFdHxf/capture-250x250-1.webp"},
+      {name:"አሩብ ስፕሪንግ ውሃ/MINI L SPRING WATER", price:25, desc:"", img:"https://i.ibb.co/r1RV0Hj/images-17-1.webp"},
+      {name:"ለስላሳ መጠጦች/SOFT DRINKS", price:60, desc:"", img:"https://i.ibb.co/V0gsrmvP/images-25-1.webp"}
     ]
   }
 ];
-
 /* Flatten items for easier filtering/search */
 let FLAT = [];
 MENU.forEach(cat=>{
@@ -395,23 +721,67 @@ function renderChips(){
 /* Render menu */
 function renderMenu(){
   const q = (searchInput.value||'').trim().toLowerCase();
-  let items = FLAT.slice();
-  if(activeCategory!=='All') items = items.filter(i=>i.category===activeCategory);
-  if(q) items = items.filter(i=>(i.name+' '+i.desc+' '+i.category).toLowerCase().includes(q));
-
+  
   menuEl.innerHTML='';
-  if(items.length===0){ emptyEl.style.display='block'; return; } 
-  else emptyEl.style.display='none';
+  emptyEl.style.display='none';
 
-  menuEl.className='menu '+viewMode;
+  // If list view OR searching OR specific category, use normal layout
+  if(viewMode === 'list' || q || activeCategory !== 'All') {
+    menuEl.className = 'menu ' + viewMode;
+    let items = FLAT.slice();
+    if(activeCategory !== 'All') items = items.filter(i => i.category === activeCategory);
+    if(q) items = items.filter(i => (i.name + ' ' + i.desc + ' ' + i.category).toLowerCase().includes(q));
+    
+    if(items.length === 0) { 
+      emptyEl.style.display = 'block'; 
+      return; 
+    }
+    
+    items.forEach(it => {
+      const card = document.createElement('article');
+      card.className = 'card';
+      const thumb = it.img ? `<img src="${it.img}" class="thumb" alt="${it.name}" loading="lazy"/>` : `<div class="thumb"></div>`;
+      card.innerHTML = `${thumb}<div class="meta"><div class="name">${it.name}</div><div class="desc">${it.desc}</div><div class="price">ETB ${it.price.toFixed(2)}</div></div>`;
+      menuEl.appendChild(card);
+    });
+    return;
+  }
 
-  items.forEach(it=>{
-    const card=document.createElement('article');
-    card.className='card';
-    const thumb = it.img? `<img src="${it.img}" class="thumb"/>` : `<div class="thumb"></div>`;
-    card.innerHTML = `${thumb}<div class="meta"><div class="name">${it.name}</div><div class="desc">${it.desc}</div><div class="price">ETB ${it.price.toFixed(2)}</div></div>`;
-    menuEl.appendChild(card);
+  // If "All" view in GRID mode, use categories layout
+  menuEl.className = 'menu all-categories';
+  let hasItems = false;
+  
+  MENU.forEach(cat => {
+    const categoryItems = cat.items;
+    if(categoryItems.length > 0) {
+      hasItems = true;
+      
+      // Create category header
+      const categoryHeader = document.createElement('div');
+      categoryHeader.className = 'category-title';
+      categoryHeader.textContent = cat.title;
+      categoryHeader.style.cssText = 'width: 100%; font-size: 22px; font-weight: 700; margin: 25px 0 15px 0; padding: 15px; color: var(--accent); background: var(--bg); border-bottom: 2px solid var(--accent);';
+      menuEl.appendChild(categoryHeader);
+      
+      // Create grid container for this category's items
+      const categoryGrid = document.createElement('div');
+      categoryGrid.className = 'category-grid';
+      categoryGrid.style.cssText = 'display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; padding: 0 12px;';
+      
+      // Add items for this category
+      categoryItems.forEach(it => {
+        const card = document.createElement('article');
+        card.className = 'card';
+        const thumb = it.img ? `<img src="${it.img}" class="thumb" alt="${it.name}"/>` : `<div class="thumb"></div>`;
+        card.innerHTML = `${thumb}<div class="meta"><div class="name">${it.name}</div><div class="desc">${it.desc}</div><div class="price">ETB ${it.price.toFixed(2)}</div></div>`;
+        categoryGrid.appendChild(card);
+      });
+      
+      menuEl.appendChild(categoryGrid);
+    }
   });
+
+  if(!hasItems) emptyEl.style.display = 'block';
 }
 
 /* Grid/List toggle */
@@ -431,8 +801,41 @@ searchInput.addEventListener('input', renderMenu);
 renderChips();
 renderMenu();
 
+// Smooth image loading
+function handleImageLoad() {
+  this.classList.add('loaded');
+}
 
+// Observe images for lazy loading
+const imageObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
+      img.addEventListener('load', handleImageLoad);
+      if (img.complete) {
+        handleImageLoad.call(img);
+      }
+      observer.unobserve(img);
+    }
+  });
+});
+
+// Apply to existing images and future images
+function observeImages() {
+  document.querySelectorAll('.thumb img').forEach(img => {
+    imageObserver.observe(img);
+  });
+}
+
+// Run after render
+observeImages();
+
+// Also run after each renderMenu
+const originalRenderMenu = renderMenu;
+renderMenu = function() {
+  originalRenderMenu();
+  setTimeout(observeImages, 100);
+};
 </script>
-  
 </body>
 </html>
