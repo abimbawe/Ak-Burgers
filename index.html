@@ -443,7 +443,94 @@ body{
   .desc {
     display: block !important;
   }
+/* Fixed height for text section - Desktop */
+@media (min-width: 768px) {
+  .card .meta {
+    height: 120px !important; /* More space for description */
+    min-height: 120px !important;
+    max-height: 120px !important;
+  }
+  
+  .name {
+    height: 34px !important;
+  }
+  
+  .desc {
+    height: 52px !important; /* Space for description */
+    overflow: hidden !important;
+  }
+  
+  .price {
+    height: 20px !important;
+    margin-top: auto !important;
+  }
 }
+
+/* Mobile - no description */
+@media (max-width: 767px) {
+  .card .meta {
+    height: 80px !important;
+    min-height: 80px !important;
+    max-height: 80px !important;
+  }
+  
+  .name {
+    height: 50px !important; /* More space for bilingual names */
+    font-size: 12px !important;
+  }
+  
+  .desc {
+    display: none !important;
+  }
+  
+  .price {
+    height: 18px !important;
+    margin-top: auto !important;
+  }
+}
+
+  /* Make item names bold on desktop only */
+@media (min-width: 768px) {
+  .name {
+    font-weight: 600 !important; /* Semi-bold for better readability */
+  }
+}
+
+/* Keep normal weight on mobile */
+@media (max-width: 767px) {
+  .name {
+    font-weight: 400 !important; /* Normal weight on mobile */
+  }
+
+/* Mobile - consistent card heights */
+@media (max-width: 767px) {
+  .card .meta {
+    height: 80px !important;
+    min-height: 80px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .name {
+    flex: 1 !important; /* Takes all available space */
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important; /* Max 3 lines */
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  
+  .price {
+    margin-top: auto !important; /* Pushes to bottom */
+    flex-shrink: 0 !important; /* Prevents shrinking */
+  }
+  
+  .desc {
+    display: none !important;
+  }
+}
+} 
 </style>
 </head>
 <body>
